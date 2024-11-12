@@ -1,4 +1,5 @@
 import os
+import random
 
 import lib
 import ad
@@ -18,6 +19,9 @@ if __name__ == '__main__':
         #     "gender" : 'Male',
         #     "age" : "(25 ~ 32)",
         # }
+        
+        if type(data) is list:
+            data = random.choice(data)
         
         age = lib.age(lib.parse_age(data)).strip()
         gender = lib.parse_gender(data).strip()
