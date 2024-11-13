@@ -84,6 +84,7 @@ def camera():
                 'gender' : gender_text,
                 'age' : age_text
             }
+            gender_age_data.append(ga_data)
 
         # 결과 이미지 표시
         cv2.imshow('Age and Gender Recognition', img)
@@ -97,4 +98,4 @@ def camera():
     # 종료 시 성별과 나이 리스트 출력
     # print("Collected Gender and Age Data:", gender_age_data)
     
-    return ga_data
+    return gender_age_data
