@@ -7,7 +7,7 @@ def search(path, word):
         for dir_name in dirs:
             if word in dir_name:
                 return os.path.join(root, dir_name)
-    # return False
+    return False
 
 def play_ad(path):
     ad_files = [f for f in os.listdir(path)]
