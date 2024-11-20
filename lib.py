@@ -31,9 +31,3 @@ def age(num: str):
     
     else:
         return "60"
-    
-# def gender(s: str):
-#     if s == "Male":
-#         return "남"
-#     else:
-#         return "여"

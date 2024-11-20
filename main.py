@@ -15,10 +15,6 @@ if __name__ == '__main__':
         sub_path = os.path.join(current_path, 'ad')
         
         data = camera.camera()
-        # data = {
-        #     "gender" : 'Male',
-        #     "age" : "(25 ~ 32)",
-        # }
         
         if type(data) is list:
             data = random.choice(data)

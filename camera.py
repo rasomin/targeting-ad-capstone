@@ -84,11 +84,8 @@ def camera():
             # 성별과 나이를 콘솔에 출력
             print(f"Detected: {gender_text}, Age: {age_text}")
             print(f"Width: {w}, Height: {h}")
-            print("")
-            # print(f"가로: {w}, 세로 : {h}")
 
             # 성별과 나이를 리스트에 저장
-            # gender_age_data.append((gender_text, age_text))
             ga_data = {
                 'gender' : gender_text,
                 'age' : age_text
@@ -103,9 +100,6 @@ def camera():
             break
 
     cv2.destroyAllWindows()
-
-    # 종료 시 성별과 나이 리스트 출력
-    # print("Collected Gender and Age Data:", gender_age_data)
     
     return gender_age_data
 
