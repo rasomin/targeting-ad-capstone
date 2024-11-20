@@ -1,6 +1,9 @@
 def camera():
     import cv2
     from picamera2 import Picamera2
+    
+    # 변수 선언
+    x = y = w = h = 0
 
     # 얼굴 탐지 및 성별, 나이 인식을 위한 설정 파일 및 모델 로드
     cascade_filename = cv2.data.haarcascades + 'haarcascade_frontalface_alt.xml'
@@ -9,13 +12,13 @@ def camera():
     MODEL_MEAN_VALUES = (78.4263377603, 87.7689143744, 114.895847746)
 
     age_net = cv2.dnn.readNetFromCaffe(
-        'deploy_age.prototxt',
-        'age_net.caffemodel'
+        'model/deploy_age.prototxt',
+        'model/age_net.caffemodel'
     )
 
     gender_net = cv2.dnn.readNetFromCaffe(
-        'deploy_gender.prototxt',
-        'gender_net.caffemodel'
+        'model/deploy_gender.prototxt',
+        'model/gender_net.caffemodel'
     )
 
     age_list = ['(0 ~ 2)', '(4 ~ 6)', '(8 ~ 12)', '(15 ~ 20)',
@@ -37,6 +40,9 @@ def camera():
 
         # RGB 이미지를 BGR로 변환
         img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
+        
+        # 상하 반전
+        img = cv2.flip(img, 0)
         
         # 4채널 이미지를 3채널로 변환 (필요한 경우)
         if img.shape[2] == 4:
@@ -77,6 +83,9 @@ def camera():
 
             # 성별과 나이를 콘솔에 출력
             print(f"Detected: {gender_text}, Age: {age_text}")
+            print(f"Width: {w}, Height: {h}")
+            print("")
+            # print(f"가로: {w}, 세로 : {h}")
 
             # 성별과 나이를 리스트에 저장
             # gender_age_data.append((gender_text, age_text))
@@ -89,8 +98,8 @@ def camera():
         # 결과 이미지 표시
         cv2.imshow('Age and Gender Recognition', img)
 
-        # 'q' 키를 누르면 종료
-        if cv2.waitKey(1) == ord('q'):
+        # 'q' 키를 누르면 종료하거나, 얼굴이 가까이 인식되면 종료
+        if cv2.waitKey(1) == ord('q') or (w >= 280 and h >= 280) :
             break
 
     cv2.destroyAllWindows()
@@ -99,3 +108,4 @@ def camera():
     # print("Collected Gender and Age Data:", gender_age_data)
     
     return gender_age_data
+
