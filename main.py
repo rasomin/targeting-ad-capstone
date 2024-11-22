@@ -7,16 +7,21 @@ import ad
 import camera
 
 import traceback
+from picamera2 import Picmera2
 
 
 if __name__ == '__main__':
     
     current_path = os.getcwd()
     sub_path = os.path.join(current_path, 'ad')
+    picam2 = Picamera2()
+    picam2.configure(picam2.create_preview_configuration(main={"size": (640, 480)}))
+    picam2.start()
+    
     
     while True:
         try:
-            data = camera.camera()
+            data = camera.camera(picam2)
             
             if type(data) is list:
                 data = random.choice(data)

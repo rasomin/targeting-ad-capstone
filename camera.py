@@ -2,8 +2,6 @@ def camera(picam2):
     import cv2
     from picamera2 import Picamera2
     
-    picam2.start()
-    
     # 변수 선언
     x = y = w = h = 0
 
