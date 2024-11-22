@@ -7,7 +7,7 @@ import ad
 import camera
 
 import traceback
-from picamera2 import Picmera2
+from picamera2 import Picamera2
 
 
 if __name__ == '__main__':
