@@ -1,6 +1,8 @@
-def camera():
+def camera(picam2):
     import cv2
     from picamera2 import Picamera2
+    
+    picam2.start()
     
     # 변수 선언
     x = y = w = h = 0
@@ -26,9 +28,9 @@ def camera():
     gender_list = ['Male', 'Female']
 
     # Picamera2 초기화
-    picam2 = Picamera2()
-    picam2.configure(picam2.create_preview_configuration(main={"size": (640, 480)}))
-    picam2.start()
+    # picam2 = Picamera2()
+    # picam2.configure(picam2.create_preview_configuration(main={"size": (640, 480)}))
+    # picam2.start()
 
     # 성별과 나이를 저장할 리스트 초기화
     gender_age_data = []
