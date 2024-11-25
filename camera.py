@@ -25,11 +25,6 @@ def camera(picam2):
                 '(25 ~ 32)', '(38 ~ 43)', '(48 ~ 53)', '(60 ~ 100)']
     gender_list = ['Male', 'Female']
 
-    # Picamera2 초기화
-    # picam2 = Picamera2()
-    # picam2.configure(picam2.create_preview_configuration(main={"size": (640, 480)}))
-    # picam2.start()
-
     # 성별과 나이를 저장할 리스트 초기화
     gender_age_data = []
     ga_data = dict()

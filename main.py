@@ -6,7 +6,6 @@ import lib
 import ad
 import camera
 
-import traceback
 from picamera2 import Picamera2
 
 
@@ -14,10 +13,10 @@ if __name__ == '__main__':
     
     current_path = os.getcwd()
     sub_path = os.path.join(current_path, 'ad')
+    
     picam2 = Picamera2()
     picam2.configure(picam2.create_preview_configuration(main={"size": (640, 480)}))
     picam2.start()
-    
     
     while True:
         try:
@@ -41,12 +40,5 @@ if __name__ == '__main__':
             
             raise
             
-        except Exception as e:
-            trace_back = traceback.format_exc()
-            msg = str(e) + "\n" + str(trace_back)
-            
-            print(msg)
-            with open('error.txt', 'a') as log:
-                log.write(msg + '\n\n')
-                
+        except:              
             continue
